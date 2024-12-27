@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Car</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .form-container h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .form-container input, 
+        .form-container textarea, 
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .form-container input:focus, 
+        .form-container textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .form-container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'add' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+           
+            <!-- <h2 style="text-align: center;">SRF</h2> -->
+          </ul>
+         
+        </div>
+      </nav>
+    
+    <div class="form-container">
+        <h1>Add Car</h1>
+        <form method="POST" enctype="multipart/form-data" action="#">
+            {% csrf_token %}
+            <label >Car Name:</label>
+            <input type="text" name="name" placeholder="Enter car name" >
+
+            <label >Car model:</label>
+            <input type="number" name="model" placeholder="Enter car model" >
+
+            <label >Car Price:</label>
+            <input type="number" name="price" placeholder="Enter car price" >
+
+            <label >Phone Number:</label>
+            <input type="number" name="phone" placeholder="Enter phone number">
+
+            <label >kilometer:</label>
+            <input type="number" name="kilometer" placeholder="kilometer" >
+
+            <label >owner:</label>
+            <input type="number" name="owner" placeholder="owner" >
+
+            <label >Location:</label>
+            <input type="text" name="location" placeholder="Enter car location" >
+
+            <label >Car Image:</label>
+            <input type="file" name="image" accept="image/*" required>
+            <select name="category">
+                {% for category in categories %}
+                <option  value="{{category.id}}">{{category.name}}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

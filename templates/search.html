@@ -1,0 +1,119 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>TRAVELER - Free Travel Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="static/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.g.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.min.css">
+</head>
+
+<body style="background-image:url('static/im/images/main.jpg');
+             background-size: cover;
+             background-repeat: no-repeat;">
+
+    <!-- <div class="head" style="background-color: rgb(133, 127, 120); padding-bottom: 70px;">
+        <h2 style="text-align: center;">SRF</h2>
+        <a class="nav-link text-white" href="{% url 'add' %}">Home</a>
+        <form method="get" action="{% url 'search' %}" style="text-align: end;">
+            <input type="text" name="query"placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </div> -->
+
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'add' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+           
+            <!-- <h2 style="text-align: center;">SRF</h2> -->
+          </ul>
+         
+        </div>
+      </nav>
+    <!-- Packages Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"></h6>
+                <img src="static/im/images/logos.png">
+                <div>
+                   <h6 style="padding-top: 10px;">ph:9074643904</h6>
+                </div>
+            </div>
+            <div class="row">
+                {% if message %}
+                <div style="background-color: rgb(122, 122, 122);    background-color: rgb(122, 120, 120);
+                padding-left: 293px;
+                padding-right: 241px;
+                text-align: center;
+                padding-bottom: 10px;
+                padding-top: 14px;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+                border-radius: 50px;">
+                    <h1 style="text-align: center;">{{ message }}</h1>
+                </div>
+                {% endif %}
+                {% if results %}
+                {% for i in results %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="{{i.Carimage.url}}" alt="" style="width: 500px;height: 350px;">
+                        <div class="p-4">
+                           <div class="name">
+                            <h1>{{i.Carname}}</h1>
+                            <a href="{% url 'detail' i.id %}">More detail</a>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="static/lib/easing/easing.min.js"></script>
+    <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="static/mail/jqBootstrapValidation.min.js"></script>
+    <script src="static/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="static/js/main.js"></script>
+</body>
+
+</html>
